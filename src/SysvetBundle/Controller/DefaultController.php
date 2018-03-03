@@ -13,7 +13,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('SysvetBundle:Default:index.html.twig'); //Nome do Bundle, Nome da pasta e Nome do arquivo
+        return $this->render('default/painel.html.twig'); //Nome do Bundle, Nome da pasta e Nome do arquivo
     }
     
     /**
