@@ -24,16 +24,10 @@
                     <td>{{ cliente.email }}</td>
                     <td>{{ cliente.telefone }}</td>
                     <td>{{ cliente.documento }}</td>
-                    <td>{% if cliente.dataCadastro %}{{ cliente.dataCadastro|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{% if cliente.dataCadastro %}{{ cliente.dataCadastro|date('d/m/Y H:i:s') }}{% endif %}</td>
                     <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('cliente_show', { 'id': cliente.id }) }}">show</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('cliente_edit', { 'id': cliente.id }) }}">edit</a>
-                            </li>
-                        </ul>
+                        <a href="{{ path('cliente_show', { 'id': cliente.id }) }}" class="btn btn-info">Exibir</a>
+                        <a href="{{ path('cliente_edit', { 'id': cliente.id }) }}" class="btn btn-primary">Editar</a>
                     </td>
                 </tr>
             {% endfor %}
