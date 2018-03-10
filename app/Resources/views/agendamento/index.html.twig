@@ -4,6 +4,22 @@
     <a href="{{ path('agendamento_new') }}" class="btn btn-primary float-right">Criar novo agendamento</a>
     <h1>Agendamentos</h1>
 
+    <div class="card">
+        <div class="card-header">Filtar por</div>
+        <div class="card-body">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown button
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <table class="table">
         <thead>
             <tr>
@@ -30,5 +46,5 @@
             {% endfor %}
         </tbody>
     </table>
-    
+
 {% endblock %}

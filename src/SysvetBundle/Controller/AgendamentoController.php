@@ -24,9 +24,18 @@ class AgendamentoController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+        
+        $hoje = new \DateTime();
 
-        $agendamentos = $em->getRepository('SysvetBundle:Agendamento')
-                ->findBy(array(), array("horario" => "ASC"));
+        $query = $em->getRepository('SysvetBundle:Agendamento')
+                ->createQueryBuilder('a');
+        
+        $agendamentos = $query->where('a.horario > :hoje')
+                ->setParameter('hoje', $hoje)
+                ->orderBy('a.horario', 'ASC')
+                ->getQuery()->getresult();
+        
+                //->findBy(array(), array("horario" => "ASC"));
 
         return $this->render('agendamento/index.html.twig', array(
             'agendamentos' => $agendamentos,
