@@ -46,6 +46,10 @@ class Cliente {
      */
     private $sexo;
     
+    public function __toString() {
+        return $this->nome;
+    }
+    
     /**
      * Get id
      *

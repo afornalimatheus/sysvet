@@ -35,6 +35,7 @@ class ClienteController extends Controller
     public function newAction(Request $request)
     {
         $cliente = new Cliente();
+        $cliente->setDataCadastro(new \DateTime());
         $form = $this->createForm('SysvetBundle\Form\ClienteType', $cliente);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

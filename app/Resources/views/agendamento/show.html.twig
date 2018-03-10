@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Agendamento</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>OS</th>
+                <th>Horário</th>
+                <th>Cliente</th>
+                <th>Serviço</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ agendamento.id }}</td>
+                <td>{% if agendamento.horario %}{{ agendamento.horario|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ agendamento.cliente}}</td>
+                <td>{{ agendamento.servico}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('agendamento_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('agendamento_edit', { 'id': agendamento.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

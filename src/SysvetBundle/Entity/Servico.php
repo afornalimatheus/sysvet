@@ -29,6 +29,10 @@ class Servico {
      */
     private $preco;
     
+    public function __toString() {
+        return $this->nome . " - " . "R$ " . $this->preco;
+    }
+    
     /**
      * Get id
      *
