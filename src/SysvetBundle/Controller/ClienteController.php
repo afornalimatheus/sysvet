@@ -1,12 +1,10 @@
 <?php
-
 namespace SysvetBundle\Controller;
-
 use SysvetBundle\Entity\Cliente;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 /**
  * Cliente controller.
  *
@@ -23,14 +21,11 @@ class ClienteController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $clientes = $em->getRepository('SysvetBundle:Cliente')->findAll();
-
         return $this->render('cliente/index.html.twig', array(
             'clientes' => $clientes,
         ));
     }
-
     /**
      * Creates a new cliente entity.
      *
@@ -42,21 +37,17 @@ class ClienteController extends Controller
         $cliente = new Cliente();
         $form = $this->createForm('SysvetBundle\Form\ClienteType', $cliente);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($cliente);
             $em->flush();
-
             return $this->redirectToRoute('cliente_show', array('id' => $cliente->getId()));
         }
-
         return $this->render('cliente/new.html.twig', array(
             'cliente' => $cliente,
             'form' => $form->createView(),
         ));
     }
-
     /**
      * Finds and displays a cliente entity.
      *
@@ -66,13 +57,11 @@ class ClienteController extends Controller
     public function showAction(Cliente $cliente)
     {
         $deleteForm = $this->createDeleteForm($cliente);
-
         return $this->render('cliente/show.html.twig', array(
             'cliente' => $cliente,
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
     /**
      * Displays a form to edit an existing cliente entity.
      *
@@ -84,20 +73,16 @@ class ClienteController extends Controller
         $deleteForm = $this->createDeleteForm($cliente);
         $editForm = $this->createForm('SysvetBundle\Form\ClienteType', $cliente);
         $editForm->handleRequest($request);
-
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('cliente_edit', array('id' => $cliente->getId()));
         }
-
         return $this->render('cliente/edit.html.twig', array(
             'cliente' => $cliente,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
     /**
      * Deletes a cliente entity.
      *
@@ -108,16 +93,13 @@ class ClienteController extends Controller
     {
         $form = $this->createDeleteForm($cliente);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($cliente);
             $em->flush();
         }
-
         return $this->redirectToRoute('cliente_index');
     }
-
     /**
      * Creates a form to delete a cliente entity.
      *
