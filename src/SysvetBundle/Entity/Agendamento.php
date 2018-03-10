@@ -9,6 +9,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Agendamento {
     
+    const STATUS_NOVO       = 'NOVO';
+    const STATUS_CONFIRMADO = 'CONFIRMADO';
+    const STATUS_PENDENTE   = 'PENDENTE';
+    const STATUS_CANCELADO  = 'CANCELADO';
+    
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -32,6 +37,11 @@ class Agendamento {
      * @ORM\JoinColumn(name="servico_id", referencedColumnName="id")
      */
     private $servico;
+    
+    /**
+     * @ORM\Column(type="string", length=15)
+     */
+    private $status;
 
     public function __toString() {
         return $this->nome;
@@ -117,5 +127,29 @@ class Agendamento {
     public function getServico()
     {
         return $this->servico;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     *
+     * @return Agendamento
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

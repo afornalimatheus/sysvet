@@ -21,7 +21,7 @@ class AgendamentoController extends Controller
      * @Route("/", name="agendamento_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         
@@ -32,6 +32,8 @@ class AgendamentoController extends Controller
         
         $agendamentos = $query->where('a.horario > :hoje')
                 ->setParameter('hoje', $hoje)
+                ->andwhere('a.status = :status')
+                ->setParameter('status', $request->get('status'))
                 ->orderBy('a.horario', 'ASC')
                 ->getQuery()->getresult();
         
@@ -51,6 +53,8 @@ class AgendamentoController extends Controller
     public function newAction(Request $request)
     {
         $agendamento = new Agendamento();
+        $agendamento->setStatus(Agendamento::STATUS_NOVO);
+        
         $form = $this->createForm('SysvetBundle\Form\AgendamentoType', $agendamento);
         $form->handleRequest($request);
 
