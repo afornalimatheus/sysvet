@@ -3,6 +3,9 @@ namespace SysvetBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+
 class ServicoType extends AbstractType
 {
     /**
@@ -10,7 +13,15 @@ class ServicoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nome')->add('descricao')->add('preco');
+        $builder->add('nome')
+                ->add('descricao', TextareaType::class, array(
+                    "label" => "Descrição",
+                    "label_attr" => array("class" => "teste")
+                ))
+                ->add('preco', MoneyType::class, array(
+                    "label" => "Preço",
+                    "currency" => "BRL"
+                ));
     }/**
      * {@inheritdoc}
      */
