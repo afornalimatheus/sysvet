@@ -36,8 +36,10 @@ class ClienteController extends Controller
     {
         $cliente = new Cliente();
         $cliente->setDataCadastro(new \DateTime());
+        
         $form = $this->createForm('SysvetBundle\Form\ClienteType', $cliente);
         $form->handleRequest($request);
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($cliente);

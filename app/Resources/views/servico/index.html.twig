@@ -7,10 +7,10 @@
     <table class="table">
         <thead>
             <tr>
-                <th><a href="?ord=id">ID</a></th>
-                <th><a href="?ord=nome">Nome</a></th>
-                <th><a href="?ord=descricao">Descrição</a></th>
-                <th><a href="?ord=preco">Preço</a></th>
+                <th><a href="?ord=id" {% if ord == 'id' %} class="text-dark" {% endif %}>ID</a></th>
+                <th><a href="?ord=nome" {% if ord == 'nome' %} class="text-dark" {% endif %}>Nome</a></th>
+                <th><a href="?ord=descricao" {% if ord == 'descricao' %} class="text-dark" {% endif %}>Descrição</a></th>
+                <th><a href="?ord=preco" {% if ord == 'preco' %} class="text-dark" {% endif %}>Preço</a></th>
                 <th>Ações</th>
             </tr>
         </thead>

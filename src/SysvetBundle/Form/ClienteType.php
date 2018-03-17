@@ -28,8 +28,7 @@ class ClienteType extends AbstractType
                     )
                 ))
                 ->add('email', EmailType::class)
-                ->add('telefone')
-                ->add('dataCadastro');
+                ->add('telefone');
     }/**
      * {@inheritdoc}
      */
