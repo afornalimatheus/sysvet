@@ -1,6 +1,9 @@
 <?php
 namespace SysvetBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="servicos")
@@ -16,16 +19,31 @@ class Servico {
     
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 50,
+     *      minMessage = "O nome deve ter pelo menos {{ limit }} caracteres.",
+     *      maxMessage = "O nome deve ter no máximo  {{ limit }} caracteres."
+     * )
+     * @Assert\NotBlank(
+     * message = "O campo não pode estar em branco!"
+     * )
      */
     private $nome;
     
     /**
      * @ORM\Column(type="text")
+     *@Assert\NotBlank(
+     * message = "O campo não pode estar em branco!"
+     * )
      */
     private $descricao;
     
     /**
      * @ORM\Column(type="decimal", scale=2)
+     *@Assert\NotBlank(
+     * message = "O campo não pode estar em branco!"
+     * )
      */
     private $preco;
     
