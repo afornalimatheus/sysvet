@@ -17,12 +17,22 @@ class ServicoController extends Controller
      * @Route("/", name="servico_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        $ord = $request->get('ord');
+        
+        if($ord == "") {
+            $ord = "id";
+        }
+        
         $em = $this->getDoctrine()->getManager();
-        $servicos = $em->getRepository('SysvetBundle:Servico')->findAll();
+        
+        $servicos = $em->getRepository('SysvetBundle:Servico')
+                ->findBy(array(), array($ord => "ASC"));
+        
         return $this->render('servico/index.html.twig', array(
             'servicos' => $servicos,
+            'ord'      => $ord
         ));
     }
     /**

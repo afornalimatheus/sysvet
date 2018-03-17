@@ -23,17 +23,29 @@ class AgendamentoController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+        $data = $request->get("data");
         
-        $hoje = new \DateTime();
-
+        if($data != "") {
+            $hoje = \DateTime::createFromFormat('d/m/Y', $data);
+        } else {
+            $hoje = new \DateTime();
+        }
+        
+        $hoje->setTime(0, 0, 0);
+        
+        $status = $request->get('status');
+        if($status == "") {
+            $status = "NOVO";
+        }
+        
+        $em = $this->getDoctrine()->getManager();
         $query = $em->getRepository('SysvetBundle:Agendamento')
                 ->createQueryBuilder('a');
         
         $agendamentos = $query->where('a.horario > :hoje')
                 ->setParameter('hoje', $hoje)
                 ->andwhere('a.status = :status')
-                ->setParameter('status', $request->get('status'))
+                ->setParameter('status', $status)
                 ->orderBy('a.horario', 'ASC')
                 ->getQuery()->getresult();
         
@@ -41,6 +53,7 @@ class AgendamentoController extends Controller
 
         return $this->render('agendamento/index.html.twig', array(
             'agendamentos' => $agendamentos,
+            'data'         => $hoje
         ));
     }
 

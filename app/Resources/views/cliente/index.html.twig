@@ -24,7 +24,7 @@
                     <td>{{ cliente.email }}</td>
                     <td>{{ cliente.telefone }}</td>
                     <td>{{ cliente.documento }}</td>
-                    <td>{% if cliente.dataCadastro %}{{ cliente.dataCadastro|date('d/m/Y H:i:s') }}{% endif %}</td>
+                    <td>{% if cliente.dataCadastro %}{{ cliente.dataCadastro|date('d/m/Y') }}{% endif %}</td>
                     <td>
                         <a href="{{ path('cliente_show', { 'id': cliente.id }) }}" class="btn btn-info">Exibir</a>
                         <a href="{{ path('cliente_edit', { 'id': cliente.id }) }}" class="btn btn-primary">Editar</a>
