@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+      <a href="{{ path('servico_new') }}" class="btn btn-primary float-right">Criar novo serviço</a>
     <h1>Servicos list</h1>
 
     <table class="table">
@@ -29,10 +30,4 @@
             {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('servico_new') }}">Create a new servico</a>
-        </li>
-    </ul>
 {% endblock %}
