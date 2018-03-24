@@ -2392,6 +2392,20 @@
         </argument>
         <argument>null</argument>
       </call>
+      <call method="add">
+        <argument type="service" id="security.request_matcher.qoewqqy"/>
+        <argument type="collection">
+          <argument>ROLE_USER</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id="security.request_matcher.rxcuwhw"/>
+        <argument type="collection">
+          <argument>ROLE_USER</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
     </service>
     <service id="security.context_listener" class="Symfony\Component\Security\Http\Firewall\ContextListener" public="false">
       <tag name="monolog.logger" channel="security"/>
@@ -2860,6 +2874,12 @@
     <service id="security.request_matcher.apbgl7z" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
       <argument>^/cliente/</argument>
     </service>
+    <service id="security.request_matcher.qoewqqy" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/servico/</argument>
+    </service>
+    <service id="security.request_matcher.rxcuwhw" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/agendamento/</argument>
+    </service>
     <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand" public="false">
       <tag name="console.command" command="security:encode-password"/>
       <argument type="service" id="security.encoder_factory.generic"/>
@@ -3045,6 +3065,10 @@
         <argument>!Sysvet</argument>
       </call>
       <call method="addPath">
+        <argument>/home/aluno/matheus-php2/sysvet/app/Resources/FOSUserBundle/views</argument>
+        <argument>FOSUser</argument>
+      </call>
+      <call method="addPath">
         <argument>/home/aluno/matheus-php2/sysvet/vendor/friendsofsymfony/user-bundle/Resources/views</argument>
         <argument>FOSUser</argument>
       </call>
@@ -3227,6 +3251,10 @@
       <call method="addPath">
         <argument>/home/aluno/matheus-php2/sysvet/src/SysvetBundle/Resources/views</argument>
         <argument>!Sysvet</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/aluno/matheus-php2/sysvet/app/Resources/FOSUserBundle/views</argument>
+        <argument>FOSUser</argument>
       </call>
       <call method="addPath">
         <argument>/home/aluno/matheus-php2/sysvet/vendor/friendsofsymfony/user-bundle/Resources/views</argument>

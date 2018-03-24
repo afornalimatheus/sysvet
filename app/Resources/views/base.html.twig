@@ -38,6 +38,11 @@
                 <li>
                     <a href="#">Relatórios</a>
                 </li>
+                {% if app.user != null %}
+                <li>
+                    <a href="/logout">{{ app.user.nome }} (Logout)</a>
+                </li>
+                {% endif %}
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
