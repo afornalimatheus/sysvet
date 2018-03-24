@@ -539,6 +539,77 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+        elseif (0 === strpos($pathinfo, '/usuario')) {
+            // usuario_index
+            if ('/usuario' === $trimmedPathinfo) {
+                $ret = array (  '_controller' => 'SysvetBundle\\Controller\\UsuarioController::indexAction',  '_route' => 'usuario_index',);
+                if ('/' === substr($pathinfo, -1)) {
+                    // no-op
+                } elseif ('GET' !== $canonicalMethod) {
+                    goto not_usuario_index;
+                } else {
+                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'usuario_index'));
+                }
+
+                if (!in_array($canonicalMethod, array('GET'))) {
+                    $allow = array_merge($allow, array('GET'));
+                    goto not_usuario_index;
+                }
+
+                return $ret;
+            }
+            not_usuario_index:
+
+            // usuario_new
+            if ('/usuario/new' === $pathinfo) {
+                $ret = array (  '_controller' => 'SysvetBundle\\Controller\\UsuarioController::newAction',  '_route' => 'usuario_new',);
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_usuario_new;
+                }
+
+                return $ret;
+            }
+            not_usuario_new:
+
+            // usuario_show
+            if (preg_match('#^/usuario/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'usuario_show')), array (  '_controller' => 'SysvetBundle\\Controller\\UsuarioController::showAction',));
+                if (!in_array($canonicalMethod, array('GET'))) {
+                    $allow = array_merge($allow, array('GET'));
+                    goto not_usuario_show;
+                }
+
+                return $ret;
+            }
+            not_usuario_show:
+
+            // usuario_edit
+            if (preg_match('#^/usuario/(?P<id>[^/]++)/edit$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'usuario_edit')), array (  '_controller' => 'SysvetBundle\\Controller\\UsuarioController::editAction',));
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_usuario_edit;
+                }
+
+                return $ret;
+            }
+            not_usuario_edit:
+
+            // usuario_delete
+            if (preg_match('#^/usuario/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'usuario_delete')), array (  '_controller' => 'SysvetBundle\\Controller\\UsuarioController::deleteAction',));
+                if (!in_array($requestMethod, array('DELETE'))) {
+                    $allow = array_merge($allow, array('DELETE'));
+                    goto not_usuario_delete;
+                }
+
+                return $ret;
+            }
+            not_usuario_delete:
+
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }
