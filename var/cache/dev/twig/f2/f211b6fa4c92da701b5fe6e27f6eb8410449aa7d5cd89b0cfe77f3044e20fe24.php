@@ -15,15 +15,15 @@ class __TwigTemplate_dc00b65b241136671db83dbc7fd685893c4abfb3d388c1cb123d91dfcc1
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_0f31af9820fae69eaae6d1705c39d8cdf9bc4528a684455c3717eff217035332 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_0f31af9820fae69eaae6d1705c39d8cdf9bc4528a684455c3717eff217035332->enter($__internal_0f31af9820fae69eaae6d1705c39d8cdf9bc4528a684455c3717eff217035332_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Icon/redirect.svg"));
+        $__internal_46fb807c70977dd4acf90dc327be6b7b5ede51e339442c5877135000ae352dd0 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_46fb807c70977dd4acf90dc327be6b7b5ede51e339442c5877135000ae352dd0->enter($__internal_46fb807c70977dd4acf90dc327be6b7b5ede51e339442c5877135000ae352dd0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Icon/redirect.svg"));
 
-        $__internal_59308a68bfb87b7d0ed0d68897cd7bfa91519546b70a8f4be759075f1ee2cffa = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_59308a68bfb87b7d0ed0d68897cd7bfa91519546b70a8f4be759075f1ee2cffa->enter($__internal_59308a68bfb87b7d0ed0d68897cd7bfa91519546b70a8f4be759075f1ee2cffa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Icon/redirect.svg"));
+        $__internal_182974b50597ab0d2d4f942ae08c9ee4c9ab262a37fe55b6b8e94a5128bee7c0 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_182974b50597ab0d2d4f942ae08c9ee4c9ab262a37fe55b6b8e94a5128bee7c0->enter($__internal_182974b50597ab0d2d4f942ae08c9ee4c9ab262a37fe55b6b8e94a5128bee7c0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Icon/redirect.svg"));
 
         // line 1
         echo "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" enable-background=\"new 0 0 24 24\" xml:space=\"preserve\">
-    <path style=\"fill:#aaa\" d=\"M23.06,7.83L14,0.38a1.25,1.25,0,0,0-2,.89V4.09a13.61,13.61,0,0,1-2.2.61l-1.3.47C8,
+    <path fill=\"#aaa\" d=\"M23.06,7.83L14,0.38a1.25,1.25,0,0,0-2,.89V4.09a13.61,13.61,0,0,1-2.2.61l-1.3.47C8,
         5.35,7.59,5.6,7.12,5.81l-0.69.35-0.72.45a10.62,10.62,0,0,0-1.41,1A13.22,13.22,0,0,0,3,8.82a15.31,15.31,
         0,0,0-1.13,1.46A17.63,17.63,0,0,0,1,11.93c-0.18.58-.34,1.16-0.48,1.71S0.45,14.76.43,15.29a10.2,10.2,0,0,0,.16,
         1.5,5.72,5.72,0,0,0,.33,1.34c0.14,0.41.26,0.82,0.42,1.19,0.37,0.71.67,1.38,1,1.94l1,1.46c0.32,0.41.63,0.75,0.87,
@@ -34,10 +34,10 @@ class __TwigTemplate_dc00b65b241136671db83dbc7fd685893c4abfb3d388c1cb123d91dfcc1
 </svg>
 ";
         
-        $__internal_0f31af9820fae69eaae6d1705c39d8cdf9bc4528a684455c3717eff217035332->leave($__internal_0f31af9820fae69eaae6d1705c39d8cdf9bc4528a684455c3717eff217035332_prof);
+        $__internal_46fb807c70977dd4acf90dc327be6b7b5ede51e339442c5877135000ae352dd0->leave($__internal_46fb807c70977dd4acf90dc327be6b7b5ede51e339442c5877135000ae352dd0_prof);
 
         
-        $__internal_59308a68bfb87b7d0ed0d68897cd7bfa91519546b70a8f4be759075f1ee2cffa->leave($__internal_59308a68bfb87b7d0ed0d68897cd7bfa91519546b70a8f4be759075f1ee2cffa_prof);
+        $__internal_182974b50597ab0d2d4f942ae08c9ee4c9ab262a37fe55b6b8e94a5128bee7c0->leave($__internal_182974b50597ab0d2d4f942ae08c9ee4c9ab262a37fe55b6b8e94a5128bee7c0_prof);
 
     }
 
@@ -62,7 +62,7 @@ class __TwigTemplate_dc00b65b241136671db83dbc7fd685893c4abfb3d388c1cb123d91dfcc1
     public function getSourceContext()
     {
         return new Twig_Source("<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" enable-background=\"new 0 0 24 24\" xml:space=\"preserve\">
-    <path style=\"fill:#aaa\" d=\"M23.06,7.83L14,0.38a1.25,1.25,0,0,0-2,.89V4.09a13.61,13.61,0,0,1-2.2.61l-1.3.47C8,
+    <path fill=\"#aaa\" d=\"M23.06,7.83L14,0.38a1.25,1.25,0,0,0-2,.89V4.09a13.61,13.61,0,0,1-2.2.61l-1.3.47C8,
         5.35,7.59,5.6,7.12,5.81l-0.69.35-0.72.45a10.62,10.62,0,0,0-1.41,1A13.22,13.22,0,0,0,3,8.82a15.31,15.31,
         0,0,0-1.13,1.46A17.63,17.63,0,0,0,1,11.93c-0.18.58-.34,1.16-0.48,1.71S0.45,14.76.43,15.29a10.2,10.2,0,0,0,.16,
         1.5,5.72,5.72,0,0,0,.33,1.34c0.14,0.41.26,0.82,0.42,1.19,0.37,0.71.67,1.38,1,1.94l1,1.46c0.32,0.41.63,0.75,0.87,
