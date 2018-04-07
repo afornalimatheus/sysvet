@@ -20,7 +20,8 @@ class AgendamentoType extends AbstractType
             "years" => range($atual, $atual + 5)
         ))
                 ->add('cliente')
-                ->add('servico');
+                ->add('servico')
+                ->add('usuario');
     }/**
      * {@inheritdoc}
      */

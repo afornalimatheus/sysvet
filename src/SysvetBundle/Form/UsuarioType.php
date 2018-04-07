@@ -1,12 +1,9 @@
 <?php
-
 namespace SysvetBundle\Form;
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-
 class UsuarioType extends AbstractType
 {
     /**
@@ -14,16 +11,18 @@ class UsuarioType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nome')
-                ->add('roles', ChoiceType::class, array(
-                    'choices' => array(
-                        'Usuário' => "ROLE_USER",
-                        'Administrador' => "ROLE_ADMIN",
-                        'Super Administrador' => "ROLE_ADMIN",
-                        'Nenhum' => NULL,
-                    ),
-                ));
-    }/**
+        $builder->add('nome');
+               /* ->add('roles', ChoiceType::class, array(
+                 'choices'  => array(
+                        'Usuario' => "ROLE_USER",
+                        'Admin' => "ROLE_ADMIN",
+                        'Super Admin' => "ROLE_SUPER_ADMIN",
+                        'Nenhum' => NULL
+                    ),   
+                )); */
+    }
+    
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
@@ -32,7 +31,6 @@ class UsuarioType extends AbstractType
             'data_class' => 'SysvetBundle\Entity\Usuario'
         ));
     }
-
     /**
      * {@inheritdoc}
      */
@@ -40,10 +38,9 @@ class UsuarioType extends AbstractType
     {
         return 'sysvetbundle_usuario';
     }
-
-    public function getParent() {
-        
+    public function getParent()
+    {
         return 'FOS\UserBundle\Form\Type\RegistrationFormType';
     }
-
+    
 }

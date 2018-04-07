@@ -4,13 +4,12 @@ sysvet_usuario:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-
+    
 sysvet:
     resource: "@SysvetBundle/Controller/"
     type:     annotation
     prefix:   /
-    
 
 #app:
-#   resource: '@AppBundle/Controller/'
+#    resource: '@AppBundle/Controller/'
 #    type: annotation

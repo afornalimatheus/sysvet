@@ -1,34 +1,37 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% if error %}
-    <div class="alert alert-danger">Usuário ou senha incorretos!</div>
+    <div class="alert alert-danger">Usuário ou senha incorretos</div>
 {% endif %}
+
 <div class="col-md-4 offset-4">
-    <div class="login-panel card">
-        <div class="card-header">
-            <h3 class="card-title">Entrar</h3>
-        </div>
-        <div class="card-body">
-            <form action="{{ path("fos_user_security_check") }}" method="post">
-                {% if csrf_token %}
-                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-                {% endif %}
-                <fieldset>
-                    <div class="form-group">
-                        <input class="form-control" placeholder="Usuário" id="username" name="_username" type="text" autofocus="">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" placeholder="Senha" id="password" name="_password" type="password" value="">
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" id="remember_me" name="_remember_me" value="on"> Lembrar senha
-                        </label>
-                    </div>
-                    <!-- Change this to a button or input when using this as a form -->
-                    <input class="btn btn-sm btn-success" type="submit" id="_submit" name="_submit" value="Entrar" />
-                </fieldset>
-            </form>
-        </div>
+<div class="login-panel card">
+    <div class="card-header">
+        <h3 class="card-title">Entrar</h3>
     </div>
+    <div class="card-body">
+        <form action="{{ path("fos_user_security_check") }}" method="post">
+            {% if csrf_token %}
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            {% endif %}
+            <fieldset>
+                <div class="form-group">
+                    <input class="form-control" placeholder="Usuário" id="username" name="_username" type="text" autofocus="" value="{{ last_username }}">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" placeholder="Senha" id="password" name="_password" type="password" value="">
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input id="remember_me" name="_remember_me" value="on" type="checkbox">Lembrar senha
+                    </label>
+                </div>
+                
+                <input class="btn btn-sm btn-success" type="submit" id="_submit" name="_submit" value="Logar" />
+            </fieldset>
+        </form>
+    </div>
+                
+</div>
+                <a href="/resetting/request" >Esqueceu a senha</a>
 </div>

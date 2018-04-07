@@ -50,6 +50,7 @@
                 <th>Horário</th>
                 <th>Cliente</th>
                 <th>Serviço</th>
+                <th>Responsável</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -60,6 +61,7 @@
                     <td>{% if agendamento.horario %}{{ agendamento.horario|date('d/m/Y H:i') }}{% endif %}</td>
                     <td>{{ agendamento.cliente }}</td>
                     <td>{{ agendamento.servico }}</td>
+                    <td>{{ agendamento.usuario }}</td>
                     <td>
                         <a href="{{ path('agendamento_show', { 'id': agendamento.id }) }}" class="btn btn-info">Exibir</a>
                         <a href="{{ path('agendamento_edit', { 'id': agendamento.id }) }}" class="btn btn-primary">Editar</a>

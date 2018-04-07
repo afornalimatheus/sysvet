@@ -3,29 +3,32 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    <script src="/js/jquery/jquery.js" type="text/javascript"></script>
-    <script src="/js/bootstrap.bundle.js" type="text/javascript"></script>
-    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <link href="/css/simple-sidebar.css" rel="stylesheet" type="text/css"/>
-</head>
-<body>
-    <div id="wrapper" class="toggled">
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <script src="/js/jquery/jquery.js" type="text/javascript"></script>
+        <script src="/js/bootstrap.bundle.js" type="text/javascript"></script>
+        <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/simple-sidebar.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+         <div id="wrapper" class="toggled">
+
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                        Sysvet
+                        SysVet
                     </a>
                 </li>
                 <li>
                     <a href="/">Home</a>
                 </li>
+                {% if is_granted("ROLE_ADMIN") %}
                 <li>
                     <a href="{{ path("usuario_index") }}">Usuários</a>
                 </li>
+                {% endif %}
                 <li>
                     <a href="{{ path("cliente_index") }}">Clientes</a>
                 </li>
@@ -40,19 +43,23 @@
                 </li>
                 {% if app.user != null %}
                 <li>
-                    <a href="{{ logout_url() }}">{{ app.user.nome }} (Logout)</a>
+                    <a href="{{ logout_url() }}"> {{ app.user.nome }} (Logout)</a>
                 </li>
                 {% endif %}
+                
             </ul>
         </div>
+                
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-        {% block body %}{% endblock %}  
+            {% block body %}{% endblock %}
+        </div>
+        <!-- /#page-content-wrapper -->
+
     </div>
-    <!-- /#page-content-wrapper -->
-</div>
-{% block javascripts %}{% endblock %}
-</body>
+        
+        {% block javascripts %}{% endblock %}
+    </body>
 </html>

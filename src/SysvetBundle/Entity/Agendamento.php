@@ -21,22 +21,28 @@ class Agendamento {
      */
      private $id;
      
-      /**
+    /**
      * @ORM\Column(type="datetime", length=100)
      */
     private $horario;
     
     /**
      * @ORM\ManyToOne(targetEntity="Cliente")
-     * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id")//Cria uma coluna na tabela Agendamento referenciado na tabela Cliente
      */
     private $cliente;
     
     /**
      * @ORM\ManyToOne(targetEntity="Servico")
-     * @ORM\JoinColumn(name="servico_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="servico_id", referencedColumnName="id") //Cria uma coluna na tabela Agendamento referenciado na tabela Servico
      */
     private $servico;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id") //Cria uma coluna na tabela Agendamento referenciado na tabela Usuario
+     */
+    private $usuario;
     
     /**
      * @ORM\Column(type="string", length=15)
@@ -151,5 +157,23 @@ class Agendamento {
     public function getStatus()
     {
         return $this->status;
+    }
+    
+    /**
+     * 
+     * @return \SysvetBundle\Entity\Usuario
+     */
+    public function getUsuario() {
+        return $this->usuario;
+    }
+
+    /**
+     * 
+     * @param \SysvetBundle\Emtity\Usuario $usuario
+     * @return \SysvetBundle\Entity\Agendamento
+     */
+    public function setUsuario(\SysvetBundle\Entity\Usuario $usuario) {
+        $this->usuario = $usuario;
+        return $this;
     }
 }

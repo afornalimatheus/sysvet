@@ -3,14 +3,17 @@
 {% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
 
 {% block body %}
-    <h1>Novo usuário</h1>
+    <h1>Novo Usuário</h1>
 
     {{ form_start(form) }}
         {{ form_row(form.nome) }}
-        {{ form_row(form.email, {'label': 'E-mail'}) }}
-        {{ form_row(form.username, {'label': 'Usuário'}) }}
-        {{ form_row(form.plainPassword.first, {'label': 'Senha'}) }}
-        {{ form_row(form.plainPassword.second, {'label': 'Confirme a senha'}) }}
+        {{ form_row(form.username, {'label': 'Username'}) }}
+        {{ form_row(form.email, {'label': 'Email'}) }}
+        {{ form_row(form.plainPassword.first, {'label':'Senha' } ) }}
+        {{ form_row(form.plainPassword.second, {'label':'Confirme a Senha' } ) }}
+        
         <input type="submit" value="Criar" class="btn btn-success float-right" />
     {{ form_end(form) }}
+
+    
 {% endblock %}

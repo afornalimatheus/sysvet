@@ -1714,6 +1714,14 @@
         <argument>2048</argument>
       </call>
       <call method="addListener">
+        <argument>console.command</argument>
+        <argument type="collection">
+          <argument type="service" id="debug.debug_handlers_listener"/>
+          <argument>configure</argument>
+        </argument>
+        <argument>2048</argument>
+      </call>
+      <call method="addListener">
         <argument>kernel.request</argument>
         <argument type="collection">
           <argument type="service" id="router_listener"/>
@@ -2386,23 +2394,16 @@
         <argument>null</argument>
       </call>
       <call method="add">
-        <argument type="service" id="security.request_matcher.apbgl7z"/>
+        <argument type="service" id="security.request_matcher.qkbgbzc"/>
         <argument type="collection">
           <argument>ROLE_USER</argument>
         </argument>
         <argument>null</argument>
       </call>
       <call method="add">
-        <argument type="service" id="security.request_matcher.qoewqqy"/>
+        <argument type="service" id="security.request_matcher.bjnivid"/>
         <argument type="collection">
-          <argument>ROLE_USER</argument>
-        </argument>
-        <argument>null</argument>
-      </call>
-      <call method="add">
-        <argument type="service" id="security.request_matcher.rxcuwhw"/>
-        <argument type="collection">
-          <argument>ROLE_USER</argument>
+          <argument>ROLE_ADMIN</argument>
         </argument>
         <argument>null</argument>
       </call>
@@ -2871,14 +2872,11 @@
     <service id="security.request_matcher.x0_yxqh" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
       <argument>^/admin/</argument>
     </service>
-    <service id="security.request_matcher.apbgl7z" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-      <argument>^/cliente/</argument>
+    <service id="security.request_matcher.qkbgbzc" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/cliente</argument>
     </service>
-    <service id="security.request_matcher.qoewqqy" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-      <argument>^/servico/</argument>
-    </service>
-    <service id="security.request_matcher.rxcuwhw" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-      <argument>^/agendamento/</argument>
+    <service id="security.request_matcher.bjnivid" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/usuario</argument>
     </service>
     <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand" public="false">
       <tag name="console.command" command="security:encode-password"/>

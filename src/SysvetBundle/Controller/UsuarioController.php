@@ -1,12 +1,9 @@
 <?php
-
 namespace SysvetBundle\Controller;
-
 use SysvetBundle\Entity\Usuario;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
-
 /**
  * Usuario controller.
  *
@@ -23,14 +20,11 @@ class UsuarioController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $usuarios = $em->getRepository('SysvetBundle:Usuario')->findAll();
-
         return $this->render('usuario/index.html.twig', array(
             'usuarios' => $usuarios,
         ));
     }
-
     /**
      * Creates a new usuario entity.
      *
@@ -42,21 +36,17 @@ class UsuarioController extends Controller
         $usuario = new Usuario();
         $form = $this->createForm('SysvetBundle\Form\UsuarioType', $usuario);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($usuario);
             $em->flush();
-
             return $this->redirectToRoute('usuario_show', array('id' => $usuario->getId()));
         }
-
         return $this->render('usuario/new.html.twig', array(
             'usuario' => $usuario,
             'form' => $form->createView(),
         ));
     }
-
     /**
      * Finds and displays a usuario entity.
      *
@@ -66,13 +56,11 @@ class UsuarioController extends Controller
     public function showAction(Usuario $usuario)
     {
         $deleteForm = $this->createDeleteForm($usuario);
-
         return $this->render('usuario/show.html.twig', array(
             'usuario' => $usuario,
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
     /**
      * Displays a form to edit an existing usuario entity.
      *
@@ -84,20 +72,16 @@ class UsuarioController extends Controller
         $deleteForm = $this->createDeleteForm($usuario);
         $editForm = $this->createForm('SysvetBundle\Form\UsuarioType', $usuario);
         $editForm->handleRequest($request);
-
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('usuario_edit', array('id' => $usuario->getId()));
         }
-
         return $this->render('usuario/edit.html.twig', array(
             'usuario' => $usuario,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
     /**
      * Deletes a usuario entity.
      *
@@ -108,16 +92,13 @@ class UsuarioController extends Controller
     {
         $form = $this->createDeleteForm($usuario);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($usuario);
             $em->flush();
         }
-
         return $this->redirectToRoute('usuario_index');
     }
-
     /**
      * Creates a form to delete a usuario entity.
      *
