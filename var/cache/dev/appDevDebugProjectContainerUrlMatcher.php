@@ -377,6 +377,77 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+        elseif (0 === strpos($pathinfo, '/atendimento')) {
+            // atendimento_index
+            if ('/atendimento' === $trimmedPathinfo) {
+                $ret = array (  '_controller' => 'SysvetBundle\\Controller\\AtendimentoController::indexAction',  '_route' => 'atendimento_index',);
+                if ('/' === substr($pathinfo, -1)) {
+                    // no-op
+                } elseif ('GET' !== $canonicalMethod) {
+                    goto not_atendimento_index;
+                } else {
+                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'atendimento_index'));
+                }
+
+                if (!in_array($canonicalMethod, array('GET'))) {
+                    $allow = array_merge($allow, array('GET'));
+                    goto not_atendimento_index;
+                }
+
+                return $ret;
+            }
+            not_atendimento_index:
+
+            // atendimento_new
+            if ('/atendimento/new' === $pathinfo) {
+                $ret = array (  '_controller' => 'SysvetBundle\\Controller\\AtendimentoController::newAction',  '_route' => 'atendimento_new',);
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_atendimento_new;
+                }
+
+                return $ret;
+            }
+            not_atendimento_new:
+
+            // atendimento_show
+            if (preg_match('#^/atendimento/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'atendimento_show')), array (  '_controller' => 'SysvetBundle\\Controller\\AtendimentoController::showAction',));
+                if (!in_array($canonicalMethod, array('GET'))) {
+                    $allow = array_merge($allow, array('GET'));
+                    goto not_atendimento_show;
+                }
+
+                return $ret;
+            }
+            not_atendimento_show:
+
+            // atendimento_edit
+            if (preg_match('#^/atendimento/(?P<id>[^/]++)/edit$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'atendimento_edit')), array (  '_controller' => 'SysvetBundle\\Controller\\AtendimentoController::editAction',));
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_atendimento_edit;
+                }
+
+                return $ret;
+            }
+            not_atendimento_edit:
+
+            // atendimento_delete
+            if (preg_match('#^/atendimento/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'atendimento_delete')), array (  '_controller' => 'SysvetBundle\\Controller\\AtendimentoController::deleteAction',));
+                if (!in_array($requestMethod, array('DELETE'))) {
+                    $allow = array_merge($allow, array('DELETE'));
+                    goto not_atendimento_delete;
+                }
+
+                return $ret;
+            }
+            not_atendimento_delete:
+
+        }
+
         elseif (0 === strpos($pathinfo, '/cliente')) {
             // cliente_index
             if ('/cliente' === $trimmedPathinfo) {
